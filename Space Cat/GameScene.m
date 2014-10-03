@@ -12,15 +12,20 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
+    CGPoint position = CGPointMake(10, 10);
+    CGPoint anchorPoint = CGPointMake(0, 0);
+    int longSide = 200;
+    int shortSide = 10;
+
     SKSpriteNode *greenNode = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor]
-                                                           size:CGSizeMake(100, 100)];
-    greenNode.position = CGPointMake(150, 150);
-    greenNode.anchorPoint = CGPointMake(0, 0);
+                                                           size:CGSizeMake(shortSide, longSide)];
+    greenNode.position = position;
+    greenNode.anchorPoint = anchorPoint;
     
     SKSpriteNode *redNode = [SKSpriteNode spriteNodeWithColor:[SKColor redColor]
-                                                         size:CGSizeMake(15, 15)];
-    redNode.position = greenNode.position;
-    redNode.anchorPoint = CGPointMake(1, 1);
+                                                         size:CGSizeMake(longSide, shortSide)];
+    redNode.position = position;
+    redNode.anchorPoint = anchorPoint;
     
     [self addChild:greenNode];
     [self addChild:redNode];
