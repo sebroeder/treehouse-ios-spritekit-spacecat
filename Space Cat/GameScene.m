@@ -12,14 +12,18 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    SKSpriteNode *greenNode = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor]
+                                                           size:CGSizeMake(100, 100)];
+    greenNode.position = CGPointMake(150, 150);
+    greenNode.anchorPoint = CGPointMake(0, 0);
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    SKSpriteNode *redNode = [SKSpriteNode spriteNodeWithColor:[SKColor redColor]
+                                                         size:CGSizeMake(15, 15)];
+    redNode.position = greenNode.position;
+    redNode.anchorPoint = CGPointMake(1, 1);
     
-    [self addChild:myLabel];
+    [self addChild:greenNode];
+    [self addChild:redNode];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
