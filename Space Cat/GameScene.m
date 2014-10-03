@@ -12,34 +12,27 @@
 
 -(void)didMoveToView:(SKView *)view {
     /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    CGPoint position = CGPointMake(10, 10);
+    CGPoint anchorPoint = CGPointMake(0, 0);
+    int longSide = 200;
+    int shortSide = 10;
+
+    SKSpriteNode *greenNode = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor]
+                                                           size:CGSizeMake(shortSide, longSide)];
+    greenNode.position = position;
+    greenNode.anchorPoint = anchorPoint;
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
+    SKSpriteNode *redNode = [SKSpriteNode spriteNodeWithColor:[SKColor redColor]
+                                                         size:CGSizeMake(longSide, shortSide)];
+    redNode.position = position;
+    redNode.anchorPoint = anchorPoint;
     
-    [self addChild:myLabel];
+    [self addChild:greenNode];
+    [self addChild:redNode];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
